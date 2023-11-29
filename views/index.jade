@@ -10,24 +10,7 @@ html(lang="en")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css")
   body
 
-    .navbar
-      .navbar-wrapper
-        .logo-wrapper
-          h1.logo
-            a(href="index.html") BAĞIŞ YOLU
-        .profile-container
-          .toggle
-            i.bi.bi-moon-fill.toggle-icon
-            i.bi.bi-brightness-high-fill.toggle-icon
-            .toggle-ball
-          .login-register-links
-            if isAuth
-              a(href="#") #{fullName}
-              a(href="/user/logout") Logout
-            else
-              a(href="/user/login") Login
-              a(href="/user/register") Register
-
+    include ./partials/navbar
 
     .container
       .content-wrapper

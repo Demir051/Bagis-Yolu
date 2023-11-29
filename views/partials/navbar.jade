@@ -1,0 +1,17 @@
+.navbar
+      .navbar-wrapper
+        .logo-wrapper
+          h1.logo
+            a(href="index.html") BAĞIŞ YOLU
+        .profile-container
+          .toggle
+            i.bi.bi-moon-fill.toggle-icon
+            i.bi.bi-brightness-high-fill.toggle-icon
+            .toggle-ball
+          .login-register-links
+            if isAuth
+              a(href="/user") #{fullName}
+              a(href="/user/logout") Logout
+            else
+              a(href="/user/login") Login
+              a(href="/user/register") Register
