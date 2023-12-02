@@ -147,6 +147,7 @@ exports.login_post = async (req, res) => {
         if (match) {
             req.session.isAuth = true;
             req.session.fullName = user.username;
+            req.session.email = user.email;
             const url = req.query.returnUrl || "/";
             return res.redirect(url);
         }

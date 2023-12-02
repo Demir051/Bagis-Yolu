@@ -55,9 +55,10 @@ app.use(usersRouter);
 // Sequelize ve User modelinin import edilmesi
 const User = require('./models/user');
 
-// Sequelize sync fonksiyonunun çağrılması (opsiyonel, veritabanı ile senkronize etmek için kullanılır)
 // (async () => {
-//     await sequelize.sync({ force: true });
+//   await sequelize.sync({
+//     force: true
+//   });
 // })();
 
 // 404 hatasını yakalayan middleware
