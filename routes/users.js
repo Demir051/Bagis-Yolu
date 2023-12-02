@@ -7,6 +7,8 @@ const userController = require('../controller/user')
 
 // user controller
 
-router.get('/profil' , userController.user_panel_get);
+router.get('/profil/edit/:userid' , isAuth , userController.user_edit_get);
+
+router.get('/profil' , isAuth ,userController.user_panel_get);
 
 module.exports = router;

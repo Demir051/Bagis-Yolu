@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+.navbar {
+    background-color: #000;
+    color: white;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.navbar-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 0 50px;
+}
+
+.logo {
+    color: rgba(255, 70, 70);
+    font-size: 30px;
+}
+
+.logo a {
+    text-decoration: none;
+    color: rgba(255, 70, 70);
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+}
+
+.profile-text-container {
+    display: flex;
+    column-gap: 5px;
+    line-height: 1;
+}
+
+.profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.navbar.active {
+    background-color: #fff;
+    color: black;
+}
+
+.navbar.active .login-register-links a {
+    color: black;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+}
+
+.profile-text-container {
+    display: flex;
+    column-gap: 5px;
+    line-height: 1;
+}
+
+.profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.toggle {
+    width: 40px;
+    height: 20px;
+    border-radius: 30px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+
+.toggle-ball {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #000;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: absolute;
+    right: 2px;
+    transition: 1.2s ease all;
+}
+
+.toggle-icon {
+    color: gold;
+}
+
+.toggle-ball.active {
+    background-color: white;
+    transform: translateX(-20px);
+}
+
+.toggle.active {
+    background-color: black;
+}
+
+.navbar.active .login-register-links a {
+    color: black;
+}
+
+.login-register-links a:hover {
+    color: rgba(255, 70, 70);
+}
+
+.login-register-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.login-register-links {
+    display: flex;
+    column-gap: 15px;
+}

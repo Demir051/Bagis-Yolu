@@ -25,9 +25,11 @@ html(lang="en")
           h4.mb-0 #{fullName}
           p.mb-0 #{userEmail}
           span.text-muted.d-block.mb-2 Role : Admin
-          button.btn.btn-primary.btn-sm.follow.mb-3 Edit Profile
+          a(href=`/profil/edit/${userId}`) 
+            button.btn.btn-primary.btn-sm.follow.mb-2 Edit Profile
           br
-          button.btn.btn-secondary.btn-sm.follow Admin Pages
+          a(href="/admin")
+            button.btn.btn-secondary.btn-sm.follow Admin Pages
             
 
 
