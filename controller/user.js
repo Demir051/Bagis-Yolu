@@ -18,7 +18,7 @@ exports.user_panel_get = async (req , res ) => {
 
     try{
 
-        res.render('user-panel',{
+        res.render('user/user-panel',{
             fullName : fullName,
             userEmail : userEmail,
             userId : user.id   
@@ -47,7 +47,7 @@ exports.user_edit_get = async (req , res ) => {
 
     try{
 
-        res.render('user-edit',{
+        res.render('user/user-edit',{
             username : user.username,
             userId : user.id,
         })
@@ -79,7 +79,7 @@ exports.user_edit_post = async (req , res ) => {
         }
 
         if(password !== confirmPassword){
-            return res.status(400).render('user-edit',{
+            return res.status(400).render('user/user-edit',{
                 username : username,
                 userId : userId,
                 errorMessage : 'Şifreler eşleşmiyor'

@@ -14,6 +14,7 @@ const locals = require('./middlewares/locals');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
+const adminRouter = require('./routes/admin');
 
 // Express uygulamasının oluşturulması
 const app = express();
@@ -51,6 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/user', authRouter);
 app.use(usersRouter);
+app.use(adminRouter);
 
 // Sequelize ve User modelinin import edilmesi
 const User = require('./models/user');
@@ -66,7 +68,7 @@ app.use(function (req, res, next) {
   next(createError(404));
 });
 
-// Hata işleme middleware'i
+// // Hata işleme middleware'i
 // app.use(function (err, req, res, next) {
 //   // Sadece development ortamında hata bilgilerini sağlar
 //   res.locals.message = err.message;

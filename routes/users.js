@@ -9,6 +9,8 @@ const userController = require('../controller/user')
 
 router.get('/profil/edit/:userid' , isAuth , userController.user_edit_get);
 
+router.post('/profil/edit/:userid' , isAuth , userController.user_edit_post);
+
 router.get('/profil' , isAuth ,userController.user_panel_get);
 
 module.exports = router;
