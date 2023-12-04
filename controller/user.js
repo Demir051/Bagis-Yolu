@@ -1,9 +1,20 @@
 const User = require("../models/user");
+const bcrypt = require('bcrypt');
+const crypto = require('crypto');
+const { isConstructorDeclaration } = require("typescript");
 
 exports.user_panel_get = async (req , res ) => {
 
     const fullName = req.session.fullName;
     const userEmail = req.session.email;
+
+    const usernameEditQery = req.query.usernameedit ? req.query.usernameedit : false ;
+
+    console.log(
+    "fullname ", fullName,
+    "useremail ", userEmail,
+    "query ", usernameEditQery
+    )
 
     const user = await User.findOne({
         where:{
@@ -11,6 +22,8 @@ exports.user_panel_get = async (req , res ) => {
             username : fullName
         }
     })
+
+    console.log("user", user)
 
     if(!user){
         return res.status(404).render('404')
@@ -21,7 +34,8 @@ exports.user_panel_get = async (req , res ) => {
         res.render('user/user-panel',{
             fullName : fullName,
             userEmail : userEmail,
-            userId : user.id   
+            userId : user.id,
+            usernameEditQery : usernameEditQery
         })
 
     }catch(err){
@@ -68,29 +82,41 @@ exports.user_edit_post = async (req , res ) => {
 
     try{
 
-        const user = await User.findOne({
-            where:{
-                id : userId
-            }
-        });
+        const user = await User.findByPk(userId);
 
         if(!user){
             return res.status(404).render('404')
         }
 
         if(password !== confirmPassword){
-            return res.status(400).render('user/user-edit',{
+            return res.render('user/user-edit',{
                 username : username,
                 userId : userId,
                 errorMessage : 'Şifreler eşleşmiyor'
             })
         }
 
-        await user.update({
-            username : username,
-        })
+        const isPasswordCorrect = await bcrypt.compare(password, user.password);
+        
+        if(isPasswordCorrect){
 
-        res.redirect('/user/profil');
+            await user.update({
+                username : username,
+            })
+
+            req.session.fullName = username;
+
+            return res.redirect('/profil?usernameedit=basarili');
+
+        }else{
+
+            return res.render('user/user-edit',{
+                username : username,
+                userId : userId,
+                errorMessage : 'Şifre yanlış'
+            })
+
+        }
 
     }catch(err){
 

@@ -16,6 +16,9 @@ html(lang="en")
 
     .container.d-flex.justify-content-center.align-items-center
       .card
+        if usernameEditQuery 
+          .alert(class=`alert-succes` , role='alert')
+            | Kullanıcı adınız başarılı şekilde değiştirildi. 
         .upper
           img.img-fluid(src="https://l24.im/3sWhw")
         .user.text-center
@@ -26,10 +29,10 @@ html(lang="en")
           p.mb-0 #{userEmail}
           span.text-muted.d-block.mb-2 Role : Admin
           a(href=`/profil/edit/${userId}`) 
-            button.btn.btn-primary.btn-sm.follow.mb-2 Edit Profile
+            button.btn.btn-primary.btn-sm.follow.mb-2 Edit Name
           br
           a(href="/adminpanel")
-            button.btn.btn-secondary.btn-sm.follow Admin Pages
+            button.btn.btn-secondary.btn-sm.follow Admin Page
             
 
 

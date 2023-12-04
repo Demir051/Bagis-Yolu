@@ -14,7 +14,9 @@ html(lang="tr")
 
     .container
       h2 Kullanıcılar
-
+      if query 
+        .alert(class=`alert-succes` , role='alert')
+          | Kullanıcı başarılı şekilde silindi. 
       table.table.table-bordered.table-striped
         thead
           tr
@@ -25,7 +27,7 @@ html(lang="tr")
             th İşlemler
 
         tbody
-          each user in allUsers
+          each user in users
             tr
               td= user.id
               td= user.username

@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-const isAuth = require('../middlewares/auth');
-
 const authController = require('../controller/auth');
 
 /* GET users listing. */
