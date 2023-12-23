@@ -4,7 +4,7 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Bağış Yolu | #{fullName} 
+    title Profil | #{fullName} 
     link(rel="stylesheet", href="../../static/stylesheets/profile.css")
     link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css")
@@ -17,7 +17,7 @@ html(lang="en")
     .container.d-flex.justify-content-center.align-items-center
       .card
         if usernameEditQuery 
-          .alert(class=`alert-succes` , role='alert')
+          .alert.alert-success(role='alert')
             | Kullanıcı adınız başarılı şekilde değiştirildi. 
         .upper
           img.img-fluid(src="https://l24.im/3sWhw")
@@ -32,12 +32,12 @@ html(lang="en")
             button.btn.btn-primary.btn-sm.follow.mb-2 Edit Name
           br
           a(href="/adminpanel")
-            button.btn.btn-secondary.btn-sm.follow Admin Page
+            button.btn.btn-secondary.btn-sm.follow Admin Panel
             
 
 
 
 
-    script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js")
+    
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
     script(src="../../static/javascripts/script.js")

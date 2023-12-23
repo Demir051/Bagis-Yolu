@@ -9,9 +9,7 @@ html(lang="en")
     link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css")
   body
-
     include ./partials/navbar
-
     .container
       .content-wrapper
         .featured-container
@@ -24,21 +22,15 @@ html(lang="en")
             a(href="https://www.kizilay.org.tr/ms/filistin/")
               button.info-button
                 i.bi.bi-info-circle
-
       .movie-list-container
-        h1.movie-list-title Popüler
+        h1.movie-list-title Diğer Sosyal Yardım Kuruluşları
         .movie-list-wrapper
           ul.movie-list
-            li.movie-item
-              img.movie-item-img(src="../static/images/ahbap.jpg", alt="")
-              .movie-item-info
-                span.movie-item-title Tıkla ve bağış yap
-                  
-            li.movie-item
-              img.movie-item-img(src="../static/images/AKUT-.png", alt="")
-              .movie-item-info
-                span.movie-item-title Tıkla ve bağış yap
-
+            each content in contents
+              li.movie-item
+                a(href=`/content/${content.id}`)
+                  img.movie-item-img(src=`../static/uploads/${content.imagePath}`, alt="image")
+                  .movie-item-info
+                    span.movie-item-title= content.title
           i.bi.bi-chevron-right.arrow
-
     script(src="../static/javascripts/script.js")

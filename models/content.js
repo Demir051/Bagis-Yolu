@@ -1,26 +1,23 @@
-// models/user.js
 const {DataTypes} = require('sequelize');
 const sequelize = require('../data/db');
 
-const User = sequelize.define('User', {
-    username: {
+const Content = sequelize.define('Content', {
+    title: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
     },
-    email: {
-        type: DataTypes.STRING,
+    content: {
+        type: DataTypes.TEXT,
         allowNull: false,
-        unique: true,
     },
-    password: {
+    imagePath: {
         type: DataTypes.STRING,
         allowNull: false,
     },
 });
 
 sequelize.sync().then(() => {
-    console.log('User modeli veritabanında senkronize edildi.');
+    console.log('Content modeli veritabanında senkronize edildi.');
 });
 
-module.exports = User;
+module.exports = Content;

@@ -5,9 +5,10 @@ html
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
   body
     div.container
-      h1 Kullanıcı Sil
-      p Silmek istediğine emin misin ? #{user.username}
+      h1 Kullanıcı Sil 
+      b #{user.username} 
+      p İsimli kullanıcıyı ilmek istediğine emin misin ? 
       form(method='POST')
         input(type="hidden", name="userId", value=`${user.id}`)
         button.btn.btn-danger(type='submit') Sil
-        a.btn.btn-secondary(href='/adminpanel') Çık
+        a.btn.btn-secondary(href='/adminpanel/users') Çık

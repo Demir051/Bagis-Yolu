@@ -9,7 +9,7 @@ const {
 exports.register_get = async (req, res) => {
     try {
 
-        return res.render("auth/register");
+        return res.render("auth/register",{title:"Kayıt Ol"});
 
     } catch (err) {
 
@@ -45,6 +45,27 @@ exports.register_post = async (req, res) => {
             })
         }
 
+        if (password.length < 6) {
+            return res.render("auth/register", {
+                message: "Şifre en az 6 karakter olmalı",
+                alert: "danger"
+            })
+        }
+
+        if (username.length < 3) {
+            return res.render("auth/register", {
+                message: "Kullanıcı adı en az 3 karakter olmalı",
+                alert: "danger"
+            })
+        }
+
+        if(email.includes("@") == false || email.includes(".") == false ){
+            return res.render("auth/register", {
+                message: "Lütfen geçerli bir e-posta adresi girin",
+                alert: "danger"
+            })
+        }
+
         const match = await User.findAll({
             where: {
                 [Op.or]: [{
@@ -71,7 +92,7 @@ exports.register_post = async (req, res) => {
                 alert: "success",
             };
 
-            return res.redirect("/user/login");
+            return res.redirect("/login");
 
         }
 
@@ -98,7 +119,8 @@ exports.login_get = async (req, res) => {
         return res.render("auth/login", {
 
             message: emailMessage.message,
-            alert: emailMessage.alert
+            alert: emailMessage.alert,
+            title: "Giriş Yap"
 
         })
 

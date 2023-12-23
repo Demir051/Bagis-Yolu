@@ -10,11 +10,6 @@ exports.user_panel_get = async (req , res ) => {
 
     const usernameEditQery = req.query.usernameedit ? req.query.usernameedit : false ;
 
-    console.log(
-    "fullname ", fullName,
-    "useremail ", userEmail,
-    "query ", usernameEditQery
-    )
 
     const user = await User.findOne({
         where:{
@@ -22,8 +17,6 @@ exports.user_panel_get = async (req , res ) => {
             username : fullName
         }
     })
-
-    console.log("user", user)
 
     if(!user){
         return res.status(404).render('404')

@@ -1,0 +1,37 @@
+doctype html
+html(lang="tr")
+  include ../partials/head
+
+  body
+    include ../partials/navbar
+
+    .container
+      nav.mt-3(aria-label="breadcrumb")
+        ol.breadcrumb
+          h3.li.breadcrumb-item.active(aria-current="page") Users
+          h3.li.breadcrumb-item: a(href="/adminpanel/contents")  Contents
+          h3.li.breadcrumb-item: a(href="/adminpanel/addcontents") Add Content
+
+      if query 
+        .alert(class=`alert-succes` , role='alert')
+          | Kullanıcı başarılı şekilde silindi. 
+      table.table.table-bordered.table-striped
+        thead
+          tr
+            th ID
+            th Adı
+            th Email
+            th Rol
+            th İşlemler
+
+        tbody
+          each user in users
+            tr
+              td= user.id
+              td= user.username
+              td= user.email
+              td= user.id
+              td
+                a.btn.btn-danger(href=`/adminpanel/kullanicisil/${user.id}`) Sil
+                a.btn.btn-primary(href=`/adminpanel/roldegistir/${user.id}` class="ms-1") Rol Değiştir
+    script(src="../static/javascripts/script.js")

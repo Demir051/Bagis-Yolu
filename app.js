@@ -5,6 +5,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const dotenv = require('dotenv');
+const multer = require('multer');
 const expressSession = require('express-session');
 const SequelizeStore = require('express-session-sequelize')(expressSession.Store);
 const sequelize = require('./data/db');
@@ -50,12 +51,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Router'ların tanımlanması
 app.use('/', indexRouter);
-app.use('/user', authRouter);
+app.use(authRouter);
 app.use(usersRouter);
 app.use(adminRouter);
 
 // Sequelize ve User modelinin import edilmesi
 const User = require('./models/user');
+const Content = require('./models/content');
 
 // (async () => {
 //   await sequelize.sync({

@@ -1,0 +1,30 @@
+doctype html
+html(lang="tr")
+  include ../partials/head
+  body
+    include ../partials/navbar
+    div.container
+      nav.mt-3(aria-label="breadcrumb")
+        ol.breadcrumb
+
+          h3.li.breadcrumb-item: a(href="/adminpanel/users") Users
+          h3.li.breadcrumb-item: a(href="/adminpanel/contents")  Contents
+          h3.li.breadcrumb-item.active(aria-current="page") Add Content
+      h1 Add Contents
+
+      form(method='post', enctype='multipart/form-data')
+        div.form-group
+          label(for='title') Title:
+          input(type='text', class='form-control mt-3', name='title', required)
+
+        div.form-group
+          label(for='content') Content:
+          textarea(class='form-control mt-3', name='content', rows='4', required)
+
+        div.form-group
+          label(for='blogImage') Image:
+          input(type='file', class='form-control-file mt-3', name='contentImage', accept='image/*', required)
+
+        button(type='submit', class='btn btn-primary mt-3') Add Contents
+
+    script(src="../static/javascripts/script.js")
