@@ -8,25 +8,30 @@ html(lang="tr")
     .container
       nav.mt-3(aria-label="breadcrumb")
         ol.breadcrumb
-
           h3.li.breadcrumb-item: a(href="/adminpanel/users") Users
           h3.li.breadcrumb-item.active(aria-current="page") Contents
           h3.li.breadcrumb-item: a(href="/adminpanel/addcontents") Add Content
 
       .container
-      h1 Content List
-      table.table
-        thead
-          tr
-            th Title
-            th Content
-            th Image
-        tbody
-          each content in contents
-            tr
-              td= content.title
-              td= content.content
-              td
-                img(src=`../static/uploads/${content.imagePath}`, alt='Content Image', style='width: 100px; height: 70px;')
+        h1 Content List
+
+        if contents.length > 0
+          table.table
+            thead
+              tr
+                th Title
+                th Content
+                th Url
+                th Image
+            tbody
+              each content in contents
+                tr
+                  td= content.title
+                  td= content.content
+                  td= content.url
+                  td
+                    img(src=`../static/uploads/${content.imagePath}`, alt='Content Image', style='width: 100px; height: 70px;')
+        else
+          div.alert.alert-warning(style="max-width: 50%; margin: auto; margin-top: 20px; margin-bottom:20px") No content available.
 
     script(src="../static/javascripts/script.js")

@@ -58,6 +58,7 @@ app.use(adminRouter);
 // Sequelize ve User modelinin import edilmesi
 const User = require('./models/user');
 const Content = require('./models/content');
+const Comment = require('./models/comment');
 
 // (async () => {
 //   await sequelize.sync({

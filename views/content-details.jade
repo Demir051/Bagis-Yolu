@@ -1,0 +1,49 @@
+doctype html
+html(lang="tr")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title #{title} | Bağış Yolu
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css")
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css")
+    link(rel="stylesheet", href="../static/stylesheets/navbar.css")
+
+  body
+    include ./partials/navbar
+
+    div.container.mt-5.text-center
+      img.img-fluid(src=`../static/uploads/${content.imagePath}`, alt="image", style="max-width: 50%; height: auto;border-radius:10px" , class="mb-3")
+      h1.display-4.mb-4= content.title
+      div
+        p.lead.mb-4
+          |  #{content.content}
+        p.lead.mb-4
+          | Ziyaret etmek için tıklayınız :
+          a(href=content.url, target="_blank") #{content.url}
+
+    
+        - if (isAuth) {
+          form(method="post" style="max-width: 50%; margin: auto;")  
+            input(type="hidden" name="contentId" value=content.id)
+            input(type="hidden" name="username" value=fullName)
+            div.form-group
+            label(for="comment") Yorum Ekle:
+            textarea#comment.form-control.mb-3(name="comment" rows="4" required)
+            button.btn.btn-primary.mb-3(type="submit") Yorum Ekle
+        - } else {
+                div.alert.alert-warning(style="max-width: 50%; margin: auto; margin-top: 20px; margin-bottom:20px") Yorum yazmak için lütfen giriş yapınız.
+
+        - }
+      
+        div.mt-3(style="max-width: 50%; margin: auto;")
+          if comments.length > 0
+            h2.mb-4= "Yorumlar"
+            each comment in comments
+              div.mt-3
+                p
+                  strong= comment.userName + ": "
+                  | #{comment.text}
+          else
+            p(style="font-style: italic;") Henüz yorum yapılmamış.
+

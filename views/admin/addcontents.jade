@@ -10,6 +10,11 @@ html(lang="tr")
           h3.li.breadcrumb-item: a(href="/adminpanel/users") Users
           h3.li.breadcrumb-item: a(href="/adminpanel/contents")  Contents
           h3.li.breadcrumb-item.active(aria-current="page") Add Content
+
+      - if (urlError)
+        div.alert.alert-danger.mt-3(role="alert")
+          | #{urlError}
+
       h1 Add Contents
 
       form(method='post', enctype='multipart/form-data')
@@ -20,6 +25,10 @@ html(lang="tr")
         div.form-group
           label(for='content') Content:
           textarea(class='form-control mt-3', name='content', rows='4', required)
+
+        div.form-group
+          label(for='url') Url:
+          input(type='text', class='form-control mt-3', name='url',  required)
 
         div.form-group
           label(for='blogImage') Image:

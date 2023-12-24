@@ -92,7 +92,7 @@ exports.contents_get = async (req, res) => {
 
         const allContents = await Content.findAll();
 
-        res.render('admin/contents' ,{
+        res.render('admin/contents', {
             title: "İçerikler",
             contents: allContents ? allContents : null
         })
@@ -105,30 +105,43 @@ exports.contents_get = async (req, res) => {
 }
 
 exports.addcontents_get = async (req, res) => {
+
+    const urlError = req.query.url;
+
     try {
 
-        res.render('admin/addcontents')
+        res.render('admin/addcontents',{
+            title: "İçerik Ekle",
+            urlError
+        })
 
-    }catch(err){
+    } catch (err) {
         console.log(err)
     }
 }
 
 exports.addcontents_post = async (req, res) => {
-    try{
-            
-            const {title, content} = req.body;
-            const image = req.file.filename
-    
-            await Content.create({
-                title: title,
-                content: content,
-                imagePath: image
-            })
-    
-            res.redirect('/adminpanel/contents')
+    try {
 
-    }catch(err){
+        const {
+            title,
+            content,
+            url
+        } = req.body;
+        const image = req.file.filename
+
+        if ( !url.includes('https://') ) return res.redirect('/adminpanel/addcontents?url=Url%20https%20ile%20başlamalıdır.')
+
+        await Content.create({
+            title: title,
+            content: content,
+            imagePath: image,
+            url: url
+        })
+
+        res.redirect('/adminpanel/contents')
+
+    } catch (err) {
         console.log(err)
     }
 }

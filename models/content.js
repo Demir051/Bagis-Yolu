@@ -10,10 +10,14 @@ const Content = sequelize.define('Content', {
         type: DataTypes.TEXT,
         allowNull: false,
     },
-    imagePath: {
+    url: {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    imagePath: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
 });
 
 sequelize.sync().then(() => {
