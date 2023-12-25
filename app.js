@@ -72,15 +72,15 @@ app.use(function (req, res, next) {
 });
 
 // // Hata işleme middleware'i
-// app.use(function (err, req, res, next) {
-//   // Sadece development ortamında hata bilgilerini sağlar
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(function (err, req, res, next) {
+  // Sadece development ortamında hata bilgilerini sağlar
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-//   // Hata sayfasını render etme
-//   res.status(err.status || 500);
-//   res.render('error');
-// });
+  // Hata sayfasını render etme
+  res.status(err.status || 500);
+  res.render('error');
+});
 
 // Uygulamanın dışa aktarılması
 module.exports = app;

@@ -145,3 +145,52 @@ exports.addcontents_post = async (req, res) => {
         console.log(err)
     }
 }
+
+exports.roldegistir_get = async (req, res) => {
+
+    const userid = req.params.userid;
+
+    try{
+
+        const user = await User.findOne({
+            where: {
+                id: userid
+            }
+        });
+
+        res.render('admin/change-role',{ 
+            user : user || {},
+            userid: userid,
+            title: "Rol Değiştir"
+        })
+
+    }catch(err){
+        console.log(err)
+    }
+}
+
+exports.roldegistir_post = async (req, res) => {
+    const userid = req.body.userid;
+
+    try {
+        const user = await User.findOne({
+            where: {
+                id: userid
+            }
+        });
+
+        if (user) {
+            await user.update({
+                role: req.body.new_role
+            });
+
+            res.redirect('/adminpanel/users');
+        } else {
+            res.status(404).send('User not found');
+        }
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).send('Internal Server Error');
+    }
+}

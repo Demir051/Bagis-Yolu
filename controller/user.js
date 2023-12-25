@@ -28,6 +28,7 @@ exports.user_panel_get = async (req , res ) => {
             fullName : fullName,
             userEmail : userEmail,
             userId : user.id,
+            userRole : user.role,
             usernameEditQery : usernameEditQery
         })
 

@@ -1,0 +1,20 @@
+doctype html
+html(lang="tr")
+  include ../partials/head
+  body
+    .container
+      .row.mt-5
+        .col-md-6.offset-md-3
+          .card
+            .card-body
+              form(method="post")
+                input(type="hidden" name="userid" value=userid)
+                .form-group
+                  h3 Rol Değiştir (#{user.username})
+                  label.mb-2(for="new_role") New Role:
+                  select(name="new_role" class="form-control mb-3")
+                    option(value="user" selected=(user && user.role === "user")) User
+                    option(value="admin" selected=(user && user.role === "admin")) Admin
+                button(type="submit" class="btn btn-primary") Change Role
+                a(href="/adminpanel/users" class="btn btn-danger ms-2") Cancel
+

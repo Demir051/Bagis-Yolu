@@ -5,10 +5,12 @@ html
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
   body
     div.container
-      h1 Kullanıcı Sil 
-      b #{user.username} 
-      p İsimli kullanıcıyı ilmek istediğine emin misin ? 
-      form(method='POST')
-        input(type="hidden", name="userId", value=`${user.id}`)
-        button.btn.btn-danger(type='submit') Sil
-        a.btn.btn-secondary(href='/adminpanel/users') Çık
+      div.row.justify-content-center.mt-5
+        div.col-md-6.border.p-4
+          h2 Kullanıcı Sil 
+          b #{user.username} 
+          p İsimli kullanıcıyı silmek istediğine emin misin ? 
+          form(method='POST' class='mt-3 mx-auto')
+            input(type="hidden", name="userId", value=`${user.id}`)
+            button.btn.btn-danger(type='submit') Sil
+            a.btn.btn-secondary(href='/adminpanel/users' class='ml-2') Çık
