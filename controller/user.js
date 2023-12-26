@@ -2,6 +2,7 @@ const User = require("../models/user");
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const { isConstructorDeclaration } = require("typescript");
+const slugify = require("../helpers/slugify");
 
 exports.user_panel_get = async (req , res ) => {
 
@@ -82,6 +83,28 @@ exports.user_edit_post = async (req , res ) => {
             return res.status(404).render('404')
         }
 
+        const userMatch = await User.findOne({
+            where : {
+                username : username
+            }
+        });
+
+        if(userMatch){
+            return res.render('user/user-edit',{
+                username : username,
+                userId : userId,
+                errorMessage : 'Bu kullanıcı adı zaten alınmış'
+            })
+        }
+
+        if(username.length < 3){
+            return res.render('user/user-edit',{
+                username : username,
+                userId : userId,
+                errorMessage : 'Kullanıcı adı 3 karakterden az olamaz'
+            })
+        }
+
         if(password !== confirmPassword){
             return res.render('user/user-edit',{
                 username : username,
@@ -96,6 +119,7 @@ exports.user_edit_post = async (req , res ) => {
 
             await user.update({
                 username : username,
+                slugUrl : slugify(username)
             })
 
             req.session.fullName = username;

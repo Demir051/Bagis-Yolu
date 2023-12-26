@@ -8,9 +8,9 @@ html(lang="tr")
           .card
             .card-body
               form(method="post")
-                input(type="hidden" name="userid" value=userid)
+                input(type="hidden" name="userid" value=user.id)
                 .form-group
-                  h3 Rol Değiştir (#{user.username})
+                  h3 Change role (#{user.username})
                   label.mb-2(for="new_role") New Role:
                   select(name="new_role" class="form-control mb-3")
                     option(value="user" selected=(user && user.role === "user")) User

@@ -23,6 +23,7 @@ html(lang="tr")
                 th Content
                 th Url
                 th Image
+                th Actions
             tbody
               each content in contents
                 tr
@@ -31,6 +32,8 @@ html(lang="tr")
                   td= content.url
                   td
                     img(src=`../static/uploads/${content.imagePath}`, alt='Content Image', style='width: 100px; height: 70px;')
+                  td
+                    a.btn.btn-danger(href=`/adminpanel/deletecontent/${content.slugUrl}`) Delete
         else
           div.alert.alert-warning(style="max-width: 50%; margin: auto; margin-top: 20px; margin-bottom:20px") No content available.
 

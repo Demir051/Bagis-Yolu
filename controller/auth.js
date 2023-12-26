@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
+const slugify = require("../helpers/slugify");
 
 const {
     Op
@@ -85,6 +86,7 @@ exports.register_post = async (req, res) => {
                 username: username,
                 email: email,
                 password: hashPassword,
+                slugUrl : slugify(username)
             });
 
             req.session.emailMessage = {

@@ -17,6 +17,10 @@ const Content = sequelize.define('Content', {
     imagePath: {
         type: DataTypes.STRING,
         allowNull: false,
+    },
+    slugUrl: {
+        type: DataTypes.STRING,
+        allowNull: false,
     }
 });
 

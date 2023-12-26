@@ -19,8 +19,8 @@ html(lang="tr")
         p.lead.mb-4
           |  #{content.content}
         p.lead.mb-4
-          | Ziyaret etmek için tıklayınız :
-          a(href=content.url, target="_blank") #{content.url}
+          | Bağış yapmak için tıklayınız :
+          a(href=content.url, target="_blank") #{content.title}
 
     
         - if (isAuth) {
@@ -28,8 +28,7 @@ html(lang="tr")
             input(type="hidden" name="contentId" value=content.id)
             input(type="hidden" name="username" value=fullName)
             div.form-group
-            label(for="comment") Yorum Ekle:
-            textarea#comment.form-control.mb-3(name="comment" rows="4" required)
+            textarea#comment.form-control.mb-3(name="comment" rows="2" placeholder="Yorum yaz" required)
             button.btn.btn-primary.mb-3(type="submit") Yorum Ekle
         - } else {
                 div.alert.alert-warning(style="max-width: 50%; margin: auto; margin-top: 20px; margin-bottom:20px") Yorum yazmak için lütfen giriş yapınız.
@@ -45,5 +44,8 @@ html(lang="tr")
                   strong= comment.userName + ": "
                   | #{comment.text}
           else
-            p(style="font-style: italic;") Henüz yorum yapılmamış.
+            p(style="font-style: italic;") Henüz yorum yapılmamış 
+  
+
+      
 

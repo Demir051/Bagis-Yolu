@@ -13,16 +13,16 @@ html(lang="tr")
           h3.li.breadcrumb-item: a(href="/adminpanel/addcontents") Add Content
 
       if query 
-        .alert(class=`alert-succes` , role='alert')
-          | Kullanıcı başarılı şekilde silindi. 
+        .alert(class="alert-success", role='alert')
+          | The user has been deleted successfully. 
       table.table.table-bordered.table-striped
         thead
           tr
             th ID
-            th Adı
+            th Name
             th Email
-            th Rol
-            th İşlemler
+            th Role
+            th Actions
 
         tbody
           each user in users
@@ -30,8 +30,8 @@ html(lang="tr")
               td= user.id
               td= user.username
               td= user.email
-              td= user.id
+              td= user.role
               td
-                a.btn.btn-danger(href=`/adminpanel/kullanicisil/${user.id}`) Sil
-                a.btn.btn-primary(href=`/adminpanel/roldegistir/${user.id}` class="ms-1") Rol Değiştir
+                a.btn.btn-danger(href=`/adminpanel/kullanicisil/${user.slugUrl}`) Delete
+                a.btn.btn-primary(href=`/adminpanel/roldegistir/${user.slugUrl}` class="ms-1") Change Role
     script(src="../static/javascripts/script.js")

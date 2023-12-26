@@ -6,7 +6,7 @@ exports.index_get = async (req, res) => {
         try {
 
             const allContents = await Content.findAll({
-                attributes: ["title","imagePath","id"]
+                attributes: ["title","imagePath","id","slugUrl"]
             });
     
             res.render('index', {
@@ -27,13 +27,13 @@ exports.content_details_get = async (req, res) => {
 
         const content = await Content.findOne({
             where: {
-                id: req.params.content_id
+                slugUrl: req.params.slug
             }
         });
 
         const comments = await Comment.findAll({
             where: {
-                contentId: req.params.content_id
+                contentId: content.id
             }
         })
 
@@ -54,13 +54,19 @@ exports.content_details_post = async (req, res) => {
        
         const {username, comment , contentId} = req.body;
 
+        const content = await Content.findOne({
+            where:{
+                id: contentId
+            }
+        })
+
         await Comment.create({
             text: comment,
             userName: username,
             contentId: contentId
         })
 
-        res.redirect(`/content/${contentId}`)
+        res.redirect(`/content/${content.slugUrl}`)
 
     }catch(err){
         console.log(err)

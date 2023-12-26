@@ -5,8 +5,8 @@ const indexController = require('../controller/index');
 
 router.get('/', indexController.index_get);
 
-router.get('/content/:content_id', indexController.content_details_get);
+router.get('/content/:slug', indexController.content_details_get);
 
-router.post('/content/:content_id', indexController.content_details_post);
+router.post('/content/:slug', indexController.content_details_post);
 
 module.exports = router;

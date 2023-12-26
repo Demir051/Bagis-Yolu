@@ -28,7 +28,7 @@ html(lang="en")
           ul.movie-list
             each content in contents
               li.movie-item
-                a(href=`/content/${content.id}`)
+                a(href=`/content/${content.slugUrl}`)
                   img.movie-item-img(src=`../static/uploads/${content.imagePath}`, alt="image")
                   .movie-item-info
                     span.movie-item-title= content.title

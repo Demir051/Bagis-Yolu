@@ -22,6 +22,10 @@ const User = sequelize.define('User', {
         allowNull: false,
         defaultValue: 'user',
     },
+    slugUrl: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
 });
 
 sequelize.sync().then(() => {
