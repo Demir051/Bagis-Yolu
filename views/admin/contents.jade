@@ -1,6 +1,10 @@
 doctype html
 html(lang="tr")
   include ../partials/head
+  style. 
+    a {
+      text-decoration: none;
+    }
 
   body
     include ../partials/navbar
@@ -13,7 +17,6 @@ html(lang="tr")
           h3.li.breadcrumb-item: a(href="/adminpanel/addcontents") Add Content
 
       .container
-        h1 Content List
 
         if contents.length > 0
           table.table

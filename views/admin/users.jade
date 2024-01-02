@@ -1,6 +1,10 @@
 doctype html
 html(lang="tr")
   include ../partials/head
+  style. 
+    a {
+      text-decoration: none;
+    }
 
   body
     include ../partials/navbar
@@ -33,5 +37,5 @@ html(lang="tr")
               td= user.role
               td
                 a.btn.btn-danger(href=`/adminpanel/kullanicisil/${user.slugUrl}`) Delete
-                a.btn.btn-primary(href=`/adminpanel/roldegistir/${user.slugUrl}` class="ms-1") Change Role
+                a.btn.btn-primary.ms-1(href=`/adminpanel/roldegistir/${user.slugUrl}`) Change Role
     script(src="../static/javascripts/script.js")

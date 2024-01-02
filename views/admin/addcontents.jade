@@ -1,6 +1,10 @@
 doctype html
 html(lang="tr")
   include ../partials/head
+  style. 
+    a {
+      text-decoration: none;
+    }
   body
     include ../partials/navbar
     div.container
@@ -14,8 +18,6 @@ html(lang="tr")
       - if (urlError)
         div.alert.alert-danger.mt-3(role="alert")
           | #{urlError}
-
-      h1 Add Contents
 
       form(method='post', enctype='multipart/form-data')
         div.form-group

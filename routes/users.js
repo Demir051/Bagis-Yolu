@@ -7,9 +7,9 @@ const userController = require('../controller/user')
 
 // user controller
 
-router.get('/profil/edit/:userid' , isAuth , userController.user_edit_get);
+router.get('/profil/edit/:slug' , isAuth , userController.user_edit_get);
 
-router.post('/profil/edit/:userid' , isAuth , userController.user_edit_post);
+router.post('/profil/edit/:slug' , isAuth , userController.user_edit_post);
 
 router.get('/profil' , isAuth ,userController.user_panel_get);
 

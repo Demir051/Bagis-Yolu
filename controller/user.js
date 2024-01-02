@@ -28,7 +28,7 @@ exports.user_panel_get = async (req , res ) => {
         res.render('user/user-panel',{
             fullName : fullName,
             userEmail : userEmail,
-            userId : user.id,
+            userSlugUrl : user.slugUrl,
             userRole : user.role,
             usernameEditQery : usernameEditQery
         })
@@ -42,11 +42,11 @@ exports.user_panel_get = async (req , res ) => {
 
 exports.user_edit_get = async (req , res ) => {
 
-    const userId = req.params.userid
+    const slug = req.params.slug
 
     const user = await User.findOne({
         where:{
-            id : userId
+            slugUrl :slug
         }
     })
 
@@ -71,13 +71,13 @@ exports.user_edit_get = async (req , res ) => {
 exports.user_edit_post = async (req , res ) => {
 
     const username = req.body.fullName.trim();
-    const userId = req.params.userid;
+    const slug = req.params.slug;
     const password = req.body.password.trim();
     const confirmPassword = req.body.confirmPassword.trim();
 
     try{
 
-        const user = await User.findByPk(userId);
+        const user = await User.findOne({where : {slugUrl : slug}});
 
         if(!user){
             return res.status(404).render('404')
@@ -92,7 +92,6 @@ exports.user_edit_post = async (req , res ) => {
         if(userMatch){
             return res.render('user/user-edit',{
                 username : username,
-                userId : userId,
                 errorMessage : 'Bu kullanıcı adı zaten alınmış'
             })
         }
@@ -100,7 +99,6 @@ exports.user_edit_post = async (req , res ) => {
         if(username.length < 3){
             return res.render('user/user-edit',{
                 username : username,
-                userId : userId,
                 errorMessage : 'Kullanıcı adı 3 karakterden az olamaz'
             })
         }
@@ -108,7 +106,6 @@ exports.user_edit_post = async (req , res ) => {
         if(password !== confirmPassword){
             return res.render('user/user-edit',{
                 username : username,
-                userId : userId,
                 errorMessage : 'Şifreler eşleşmiyor'
             })
         }
@@ -123,14 +120,12 @@ exports.user_edit_post = async (req , res ) => {
             })
 
             req.session.fullName = username;
-
             return res.redirect('/profil?usernameedit=basarili');
 
         }else{
 
             return res.render('user/user-edit',{
                 username : username,
-                userId : userId,
                 errorMessage : 'Şifre yanlış'
             })
 

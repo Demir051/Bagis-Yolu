@@ -1,17 +1,19 @@
-.navbar
-      .navbar-wrapper
-        .logo-wrapper
-          h1.logo
-            a(href="/") BAĞIŞ YOLU
-        .profile-container
-          .toggle
-            i.bi.bi-moon-fill.toggle-icon
-            i.bi.bi-brightness-high-fill.toggle-icon
-            .toggle-ball
-          .login-register-links
-            if isAuth
-              a(href="/profil") #{fullName}
-              a(href="/logout") Logout
-            else
-              a(href="/login") Login
-              a(href="/register") Register
+nav.navbar.navbar-expand-lg.navbar-dark.navbar-custom.p-2
+  a.navbar-brand.ms-2(href="#") Bağış Yolu
+  button.navbar-toggler(type="button", data-toggle="collapse", data-target="#navbarNav", aria-controls="navbarNav", aria-expanded="false", aria-label="Toggle navigation")
+    span.navbar-toggler-icon
+  .collapse.navbar-collapse#navbarNav
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href="/") Anasayfa
+    ul.navbar-nav.ml-auto.ms-auto
+      if isAuth
+        li.nav-item
+          a.nav-link(href="/profil") #{fullName}
+        li.nav-item
+          a.nav-link(href="/logout") Çıkış
+      else
+        li.nav-item
+          a.nav-link(href="/login") Giriş
+        li.nav-item
+          a.nav-link(href="/register") Kayıt
