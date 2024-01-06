@@ -10,3 +10,10 @@ Bağış Yolu, insanların toplu bir şekilde bağış kurumlarını görüp kol
 - Jade
 - Git
 
+## İçerisinde Bulunan Sayfalar
+
+- Anasayfa
+- Admin Sayfası
+- Kullanıcı Sayfası
+- Kurum Detay Sayfası
+
