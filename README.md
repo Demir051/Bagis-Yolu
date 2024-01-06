@@ -2,25 +2,11 @@
 
 Bağış Yolu, insanların toplu bir şekilde bağış kurumlarını görüp kolayca bağış yapabileceği bir platformdur.
 
-## İçindekiler
-
-- [Başlangıç](#başlangıç)
-  - [Gereksinimler](#gereksinimler)
-  - [Kurulum](#kurulum)
-- [Kullanım](#kullanım)
-- [Katkıda Bulunma](#katkıda-bulunma)
-- [Lisans](#lisans)
-
-## Başlangıç
-
-### Gereksinimler
+## Kullanılan Teknolojiler
 
 - Node.js
+- Express.js
 - MySQL
+- Jade
+- Git
 
-### Kurulum
-
-1. Projeyi kopyalayın:
-
-```bash
-git clone https://github.com/kullaniciadi/projeadi.git
